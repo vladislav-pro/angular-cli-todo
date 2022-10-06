@@ -15,6 +15,6 @@ export class HeaderComponent implements OnInit {
   title: string = 'angular-todo';
 
   addTodo(){
-
+    console.log('click')
   }
 }
