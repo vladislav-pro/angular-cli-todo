@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Todo} from "../../Todo";
-import {MockedTodoList} from "../../mocked-todo-list";
+import { TodoService } from "../../services/todo.service";
 
 @Component({
   selector: 'app-todo-list',
@@ -8,11 +8,17 @@ import {MockedTodoList} from "../../mocked-todo-list";
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
-  todos: Todo[] = MockedTodoList;
+  todos: Todo[] = [];
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
+    this.todoService.getTodo().subscribe((todo)=>(this.todos=todo));
+  }
+
+  deleteTodo(todo: Todo) {
+    this.todoService.deleteTodo(todo)
+      .subscribe(()=>(this.todos = this.todos.filter(t => t.id !== todo.id)));
   }
 
 }
