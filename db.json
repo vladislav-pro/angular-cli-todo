@@ -4,13 +4,13 @@
       "id": 1,
       "text": "wash dishes",
       "day": "monday at 11am",
-      "reminder": true
+      "reminder": false
     },
     {
       "id": 2,
       "text": "go to the gym",
       "day": "monday at 4pm",
-      "reminder": false
+      "reminder": true
     },
     {
       "id": 3,
@@ -33,11 +33,10 @@
       "time": 2
     },
     {
-      "id": 6,
-      "text": "test",
-      "day": "test",
-      "reminder": false,
-      "time": 2
+      "text": "study English",
+      "day": "Sunday",
+      "reminder": true,
+      "id": 7
     }
   ]
 }

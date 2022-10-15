@@ -7,7 +7,8 @@ import {Todo} from "../../Todo";
   styleUrls: ['./todo-item.component.scss']
 })
 export class TodoItemComponent implements OnInit {
-  @Output() onDeleteTodo: EventEmitter<Todo> = new EventEmitter<Todo>()
+  @Output() onDeleteTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
+  @Output() onToggleStatus: EventEmitter<Todo> = new EventEmitter<Todo>();
   @Input() todo!: Todo;
 
   constructor() {
@@ -17,8 +18,12 @@ export class TodoItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onDelete(todo: any) {
+  onDelete(todo: Todo) {
     this.onDeleteTodo.emit(todo)
+  }
+
+  onToggle(todo: Todo){
+    this.onToggleStatus.emit(todo)
   }
 
 }

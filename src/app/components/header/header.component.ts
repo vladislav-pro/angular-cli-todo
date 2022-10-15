@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UiService } from "../../services/ui.service";
+import { Subscription } from "rxjs";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -6,15 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  title: string = 'Vladyslav-todo';
+  showAddForm: boolean = false;
+  subscription: Subscription;
 
-  constructor() { }
+  constructor(private uiService:UiService, private router:Router) {
+    this.subscription = this.uiService.onToggle()
+      .subscribe( value => this.showAddForm = value)
+  }
 
   ngOnInit(): void {
   }
 
-  title: string = 'angular-todo';
-
-  addTodo(){
-    console.log('click')
+  showAddTodo(){
+    this.uiService.toggleAddTodo()
   }
+
+  hasRoute(route: string):any {
+    return this.router.url === route;
+  }
+
 }

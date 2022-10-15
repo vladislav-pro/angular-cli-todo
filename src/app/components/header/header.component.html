@@ -3,8 +3,9 @@
     {{ title }}
   </h1>
   <app-button
-    color="green"
-    text="buum"
-    (btnClick)="addTodo()">
+    *ngIf="hasRoute('/')"
+    color="{{showAddForm ? 'red' : 'green'}}"
+    text="{{showAddForm ? 'Close' : 'Add'}}"
+    (btnClick)="showAddTodo()">
   </app-button>
 </header>

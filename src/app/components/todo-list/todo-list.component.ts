@@ -21,4 +21,13 @@ export class TodoListComponent implements OnInit {
       .subscribe(()=>(this.todos = this.todos.filter(t => t.id !== todo.id)));
   }
 
+  toggleStatus(todo: Todo){
+    todo.reminder = !todo.reminder;
+    this.todoService.updateTodoStatus(todo).subscribe()
+  }
+
+  addTodo(todo: Todo){
+    this.todoService.addTodo(todo).subscribe( todo => this.todos.push(todo))
+  }
+
 }
